@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" /> <!-- Tailwind blue-600 -->
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" /> <!-- Tailwind emerald-500 -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Shield Base -->
+  <path d="M256 24C150 24 64 64 64 64V240C64 360 150 460 256 488C362 460 448 360 448 240V64C448 64 362 24 256 24Z" 
+        fill="none" stroke="url(#shieldGrad)" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        
+  <!-- Agent Nodes (Inside Shield) -->
+  <circle cx="256" cy="180" r="40" fill="#2563eb" />
+  <circle cx="160" cy="320" r="32" fill="#10b981" />
+  <circle cx="352" cy="320" r="32" fill="#10b981" />
+  
+  <!-- Data Flow Connection Lines -->
+  <path d="M236 210 L180 295" stroke="#94a3b8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M276 210 L332 295" stroke="#94a3b8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M192 320 L320 320" stroke="#94a3b8" stroke-width="12" stroke-linecap="round" stroke-dasharray="15 15"/>
+</svg>

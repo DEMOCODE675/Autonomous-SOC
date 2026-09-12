@@ -4,7 +4,7 @@ A production-grade, AI-driven Security Operations (SecOps) platform that autonom
 
 ## 🚀 Live Environments
 
-* **Web Command Center (Vercel):** `[]`
+* **Web Command Center (Vercel):** `[https://autonomoussoc.vercel.app/]`
 * **Automated GitOps Target Repo:** [DEMOCODE675/security-target-system](https://github.com/DEMOCODE675/security-target-system)
 
 ---
@@ -26,5 +26,23 @@ This architecture bridges advanced natural language synthesis with rigorous syst
 
 **1. Clone & Configure**
 ```bash
-git clone [https://github.com//git_wokflow.git](https://github.com//git_wokflow.git)
+git clone https://github.com/DEMOCODE675/Autonomous-SOC.git
 cd git_wokflow
+
+**2. Create a .env file in the root directory**
+```bash
+GEMINI_API_KEY=your_google_ai_key
+GITHUB_TOKEN=your_personal_access_token
+GITHUB_REPO=DEMOCODE675/security-target-system # or #( you can add your own target repo )
+
+**3. Launch the Intelligence Engine (Backend)**
+```bash
+cd backend
+pip install -r requirements.txt
+python -m uvicorn main:app --reload --port 8000
+
+**4. Launch the Command Center (Frontend)**
+```bash
+cd frontend
+npm install
+npm run dev
