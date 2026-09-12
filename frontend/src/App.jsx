@@ -109,7 +109,7 @@ export default function App() {
     setNodeActive('sandbox');
     setStatusText('Executing synthesized mitigation in isolated sandbox...');
     
-    const res = await fetch(`${API_BASE}/api/execute-sandbox`, {
+    const res = await fetch(`${API_BASE}/api/approve-and-execute`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
