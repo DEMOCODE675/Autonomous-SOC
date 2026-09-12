@@ -1,3 +1,5 @@
+<img width="1240" height="1036" alt="image" src="https://github.com/user-attachments/assets/56b8df10-28ec-4fd0-8955-860893508bde" />
+
 # 🛡️ Agentic SOAR: Autonomous Security Orchestration Pipeline
 
 A production-grade, AI-driven Security Operations (SecOps) platform that autonomously detects, triages, and mitigates network threats. By leveraging multi-agent LLM orchestration and GitOps infrastructure-as-code, this system transforms raw network telemetry into verified, sandboxed, and auditable security patches in seconds.
@@ -24,25 +26,25 @@ This architecture bridges advanced natural language synthesis with rigorous syst
 
 ## 🛠️ Local Development Setup
 
-**1. Clone & Configure**
+**1. Clone the Repository**
 ```bash
 git clone https://github.com/DEMOCODE675/Autonomous-SOC.git
-cd git_wokflow
+cd Autonomous-SOC
 
-**2. Create a .env file in the root directory**
-```bash
+2. Create a .env file in the root directory
+
 GEMINI_API_KEY=your_google_ai_key
 GITHUB_TOKEN=your_personal_access_token
 GITHUB_REPO=DEMOCODE675/security-target-system # or #( you can add your own target repo )
 
-**3. Launch the Intelligence Engine (Backend)**
-```bash
+3. Launch the Intelligence Engine (Backend)
+
 cd backend
 pip install -r requirements.txt
 python -m uvicorn main:app --reload --port 8000
 
-**4. Launch the Command Center (Frontend)**
-```bash
+4. Launch the Command Center (Frontend)
+
 cd frontend
 npm install
 npm run dev
