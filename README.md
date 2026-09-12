@@ -1,3 +1,5 @@
+<img width="123" height="150" alt="Telemetry Log Approval-2026-09-12-213948" src="https://github.com/user-attachments/assets/af7037f5-75ce-46f2-9ef6-b243279b6469" />
+
 <img width="1240" height="1036" alt="image" src="https://github.com/user-attachments/assets/56b8df10-28ec-4fd0-8955-860893508bde" />
 
 # 🛡️ Agentic SOAR: Autonomous Security Orchestration Pipeline
