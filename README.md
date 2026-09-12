@@ -6,12 +6,12 @@ A production-grade, AI-driven Security Operations (SecOps) platform that autonom
 
 ## 🚀 Live Environments
 
-* **Web Command Center (Vercel):** `[https://autonomoussoc.vercel.app/]`
+* **Web Command Center (Vercel):** [Autonomoussoc.vercel.app](https://autonomoussoc.vercel.app)
 * **Automated GitOps Target Repo:** [DEMOCODE675/security-target-system](https://github.com/DEMOCODE675/security-target-system)
 
 ---
 
-## 🧠 Core System Capabilities
+##   Core System Capabilities
 
 This architecture bridges advanced natural language synthesis with rigorous system administration and network packet analysis to ensure zero-trust execution.
 
@@ -24,7 +24,7 @@ This architecture bridges advanced natural language synthesis with rigorous syst
 
 ---
 
-## 🛠️ Local Development Setup
+##   Local Development Setup
 
 **1. Clone the Repository**
 ```bash
