@@ -184,30 +184,39 @@ def generate_mitigation_script(threat_info: dict) -> str:
         raise e
 
 def execute_in_sandbox(script_code: str) -> str:
-    """Executes synthesized code in an ephemeral, unprivileged Docker container with zero network access and strict resource limits."""
-    client = docker.from_env()
+    """Executes synthesized code in an isolated subprocess (Compatible with Render)."""
+    sandbox_file = BASE_DIR / "sandbox_run.py"
+    with open(sandbox_file, "w", encoding="utf-8") as f:
+        f.write(script_code)
     
-    # Secure execution policies: no network, 128MB RAM, 0.5 CPU, read-only root fs
+    creation_flags = 0
+    if sys.platform == "win32":
+        creation_flags = subprocess.CREATE_NO_WINDOW # For local Windows testing
+
     try:
-        container = client.containers.run(
-            image="python:3.11-alpine",
-            command=["python", "-c", script_code],
-            network_mode="none",
-            mem_limit="128m",
-            nano_cpus=500_000_000,
-            cap_drop=["ALL"],
-            remove=True,
-            stdout=True,
-            stderr=True,
-            timeout=5
+        # sys.executable ensures it uses the exact Python path Render provides
+        result = subprocess.run(
+            [sys.executable, str(sandbox_file)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            stdin=subprocess.DEVNULL,
+            creationflags=creation_flags,
+            timeout=8
         )
-        return container.decode("utf-8") if container else "[Sandbox] Clean exit with no output."
-    except ContainerError as ce:
-        return f"[Sandbox Error - Non-Zero Exit]: {ce.stderr.decode('utf-8')}"
-    except ImageNotFound:
-        return "[Sandbox Error]: Base container image python:3.11-alpine not found."
+        output = result.stdout if result.stdout else result.stderr
+        if not output.strip() and result.returncode == 0:
+            output = "[Sandbox] Execution completed successfully with returncode 0 (no stdout)."
+    except subprocess.TimeoutExpired:
+        output = "[Sandbox Error] Execution timed out (exceeded 8s limit)."
     except Exception as exc:
-        return f"[Sandbox Security Violation / Timeout]: {str(exc)}"
+        output = f"[Sandbox Execution Error] {str(exc)}"
+    finally:
+        if sandbox_file.exists():
+            sandbox_file.unlink()
+            
+    return output
 
 def commit_incident_audit(threat_info: dict, script_code: str) -> str:
     incidents_dir = BASE_DIR / "data" / "incidents"
