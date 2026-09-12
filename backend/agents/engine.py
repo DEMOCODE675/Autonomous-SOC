@@ -10,8 +10,6 @@ from google.genai.errors import APIError
 from dotenv import load_dotenv
 import datetime
 from github import Github, GithubException
-import docker
-from docker.errors import ContainerError, ImageNotFound
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / "backend" / ".env")
