@@ -200,11 +200,16 @@ export default function App() {
         
         {/* Header Bar */}
         <div className="flex justify-between items-center mb-4">
-          <div>
-            <h1 className="text-xl font-bold text-gray-900">Multi-Agent System Workflow</h1>
-            <p className="text-sm text-gray-500">
-              Status: <span className="font-mono text-blue-600 font-semibold">{statusText}</span>
-            </p>
+          <div className="flex items-center gap-4">
+            {/* AegisFlow Logo */}
+            <img src="/gemini-svg.svg" alt="AegisFlow Logo" className="w-10 h-10 drop-shadow-sm" />
+            
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 tracking-tight"><span className="text-gray-400 font-normal">Autonomous SOC</span></h1>
+              <p className="text-sm text-gray-500 mt-0.5">
+              Status: <span className="font-mono text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded border border-blue-100">{statusText}</span>
+              </p>
+            </div>
           </div>
 
           {/* Right-Hand Controls */}
