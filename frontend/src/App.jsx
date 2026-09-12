@@ -8,6 +8,8 @@ import {
 import '@xyflow/react/dist/style.css';
 import CustomCardNode from './components/CustomCardNode';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 const SCENARIOS = {
   ssh: {
     label: "SSH Brute Force",
@@ -37,7 +39,7 @@ const SCENARIOS = {
     }
   },
   custom: {
-    label: "Custom Raw Telemetry ✏️",
+    label: "Custom Raw Telemetry",
     payload: null
   }
 };
@@ -107,7 +109,7 @@ export default function App() {
     setNodeActive('sandbox');
     setStatusText('Executing synthesized mitigation in isolated sandbox...');
     
-    const res = await fetch('http://localhost:8000/api/approve-and-execute', {
+    const res = await fetch(`${API_BASE}/api/execute-sandbox`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -145,7 +147,7 @@ export default function App() {
       setNodeActive('analyzer');
       setStatusText('Log Analyzer parsing threat with Gemini 3.6 Flash...');
 
-      const res = await fetch('http://localhost:8000/api/plan-mitigation', {
+      const res = await fetch(`${API_BASE}/api/plan-mitigation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(getPayload()),
